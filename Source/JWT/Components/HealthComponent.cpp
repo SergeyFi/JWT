@@ -6,7 +6,6 @@
 // Sets default values for this component's properties
 UHealthComponent::UHealthComponent()
 {
-	// ...
 }
 
 void UHealthComponent::RemoveHealth(float Damage)
@@ -19,4 +18,14 @@ void UHealthComponent::RemoveHealth(float Damage)
 		
 		OnHealthEnd.Broadcast();
 	}
+}
+
+float UHealthComponent::GetHealth() const
+{
+	return Health;
+}
+
+float UHealthComponent::GetHealthMax() const
+{
+	return HealthMax;
 }

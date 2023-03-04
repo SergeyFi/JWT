@@ -20,10 +20,19 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Health")
 	void RemoveHealth(float Damage);
 
+	UFUNCTION(BlueprintPure, Category = "Health")
+	float GetHealth() const;
+
+	UFUNCTION(BlueprintPure, Category = "Health")
+	float GetHealthMax() const;
+
 	UPROPERTY(BlueprintAssignable, Category = "Health")
 	FHealthDelegate OnHealthEnd;
 	
 protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, meta = (ClampMin=0.0f))
 	float Health = 100.0f;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, meta = (ClampMin=0.0f))
+	float HealthMax = 100.0f;
 };
