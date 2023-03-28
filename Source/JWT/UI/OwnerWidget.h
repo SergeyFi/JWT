@@ -18,6 +18,9 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = "Widget")
 	AActor* GetActorOwner() const;
+
+	UFUNCTION(BlueprintCallable, Category = "Widget")
+	void SetActorOwner(AActor* NewOwner);
 	
 protected:
 

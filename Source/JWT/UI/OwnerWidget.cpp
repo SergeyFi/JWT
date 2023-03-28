@@ -7,3 +7,8 @@ AActor* UOwnerWidget::GetActorOwner() const
 {
 	return ActorOwner;
 }
+
+void UOwnerWidget::SetActorOwner(AActor* NewOwner)
+{
+	ActorOwner = NewOwner;
+}
