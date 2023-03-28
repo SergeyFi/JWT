@@ -26,4 +26,7 @@ protected:
 
 	UPROPERTY(BlueprintReadOnly, meta = (ExposeOnSpawn = "true"))
 	AActor* ActorOwner;
+
+	UFUNCTION(BlueprintNativeEvent, Category = "Widget")
+	void OnActorOwnerSet(AActor* NewOwner);
 };

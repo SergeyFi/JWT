@@ -11,4 +11,11 @@ AActor* UOwnerWidget::GetActorOwner() const
 void UOwnerWidget::SetActorOwner(AActor* NewOwner)
 {
 	ActorOwner = NewOwner;
+
+	OnActorOwnerSet(NewOwner);
+}
+
+void UOwnerWidget::OnActorOwnerSet_Implementation(AActor* NewOwner)
+{
+	
 }
