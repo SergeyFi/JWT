@@ -30,9 +30,9 @@ public:
 	FHealthDelegate OnHealthEnd;
 	
 protected:
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, meta = (ClampMin=0.0f))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (ClampMin=0.0f))
 	float Health = 100.0f;
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, meta = (ClampMin=0.0f))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (ClampMin=0.0f))
 	float HealthMax = 100.0f;
 };
