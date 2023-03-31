@@ -63,6 +63,16 @@ void AGunshot::OnAmmoGrabVolumeOverlap(UPrimitiveComponent* OverlappedComponent,
 
 void AGunshot::OnAmmoGrabbed()
 {
+	if (Ammo)
+	{
+		auto AmmoRootPrimitive = Cast<UPrimitiveComponent>(Ammo->GetRootComponent());
+	
+		if (AmmoRootPrimitive)
+		{
+			AmmoRootPrimitive->SetCollisionResponseToChannel(ECollisionChannel::ECC_PhysicsBody, ECollisionResponse::ECR_Block);
+		}
+	}
+	
 	Ammo = nullptr;
 	bAmmoEquiped = false;
 }
