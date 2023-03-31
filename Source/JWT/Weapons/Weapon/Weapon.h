@@ -17,18 +17,15 @@ public:
 	AWeapon();
 
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
-	void Fire();
+	virtual void Fire();
 
 	UFUNCTION(BlueprintCallable, Category = "Weapon")
-	void FireStop();
+	virtual void FireStop();
 
 protected:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Weapon")
 	TSubclassOf<AProjectile> ProjectileClass;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Weapon")
-	USceneComponent* Muzzle;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "Weapon")
 	FVector MuzzleShift;

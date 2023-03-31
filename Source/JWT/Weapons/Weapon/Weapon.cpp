@@ -8,11 +8,6 @@ AWeapon::AWeapon()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
-
-	RootComponent = CreateDefaultSubobject<USceneComponent>("Root");
-	
-	Muzzle = CreateDefaultSubobject<USceneComponent>("Muzzle");
-	Muzzle->SetupAttachment(RootComponent);
 }
 
 void AWeapon::Fire()
@@ -27,7 +22,7 @@ void AWeapon::Fire()
 			Spread.Pitch += FMath::RandRange(-SpreadingAngle, SpreadingAngle);	
 		}
 		
-		FTransform SpawnTransform = Muzzle->GetComponentTransform();
+		FTransform SpawnTransform = GetRootComponent()->GetSocketTransform("Muzzle");
 		SpawnTransform.SetScale3D({1.0f, 1.0f, 1.0f});
 		SpawnTransform.SetLocation(SpawnTransform.GetLocation() + MuzzleShift);
 		SpawnTransform.SetRotation((SpawnTransform.Rotator() + Spread).Quaternion());
