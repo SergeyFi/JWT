@@ -22,15 +22,16 @@ void AWeapon::Fire()
 			Spread.Pitch += FMath::RandRange(-SpreadingAngle, SpreadingAngle);	
 		}
 		
-		FTransform SpawnTransform = GetRootComponent()->GetSocketTransform("Muzzle");
-		SpawnTransform.SetScale3D({1.0f, 1.0f, 1.0f});
-		SpawnTransform.SetLocation(SpawnTransform.GetLocation() + MuzzleShift);
-		SpawnTransform.SetRotation((SpawnTransform.Rotator() + Spread).Quaternion());
+		auto SpawnLocation = GetRootComponent()->GetSocketLocation("Muzzle");
+		SpawnLocation += MuzzleShift;
+		
+		auto SpawnRotation = GetRootComponent()->GetSocketRotation("Muzzle");
+		SpawnRotation += Spread;
 
 		FActorSpawnParameters SpawnParameters;
 		SpawnParameters.Instigator = GetInstigator();
 		
-		GetWorld()->SpawnActor<AActor>(ProjectileClass, SpawnTransform, SpawnParameters);
+		GetWorld()->SpawnActor<AActor>(ProjectileClass, SpawnLocation, SpawnRotation, SpawnParameters);
 	}
 }
 
