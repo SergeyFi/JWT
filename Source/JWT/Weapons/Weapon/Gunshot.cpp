@@ -17,14 +17,11 @@ AGunshot::AGunshot()
 
 void AGunshot::Fire()
 {
-	if (Ammo)
+	if (Ammo && Ammo->IsAvailable() && bAmmoEquiped)
 	{
-		if (Ammo->IsAvailable())
-		{
-			Super::Fire();
+		Super::Fire();
 
-			Ammo->Remove(AmmoPerShot);
-		}
+		Ammo->Remove(AmmoPerShot);
 	}
 }
 

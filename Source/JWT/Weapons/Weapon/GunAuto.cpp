@@ -5,7 +5,7 @@
 
 void AGunAuto::Fire()
 {
-	if (!bFire && GetAmmo()->IsAvailable())
+	if (GetAmmo() && !bFire && GetAmmo()->IsAvailable())
 	{
 		bFire = true;
 		GetWorld()->GetTimerManager().SetTimer(AutoFireTimer, this, &AGunAuto::AutoFire, FireRate, true);
@@ -24,7 +24,7 @@ void AGunAuto::AutoFire()
 {
 	Super::Fire();
 
-	if (!GetAmmo()->IsAvailable())
+	if (GetAmmo() && !GetAmmo()->IsAvailable())
 	{
 		FireStop();
 	}
