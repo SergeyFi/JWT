@@ -26,8 +26,11 @@ void AWeapon::Fire()
 		SpawnTransform.SetScale3D({1.0f, 1.0f, 1.0f});
 		SpawnTransform.SetLocation(SpawnTransform.GetLocation() + MuzzleShift);
 		SpawnTransform.SetRotation((SpawnTransform.Rotator() + Spread).Quaternion());
+
+		FActorSpawnParameters SpawnParameters;
+		SpawnParameters.Instigator = GetInstigator();
 		
-		GetWorld()->SpawnActor<AActor>(ProjectileClass, SpawnTransform);
+		GetWorld()->SpawnActor<AActor>(ProjectileClass, SpawnTransform, SpawnParameters);
 	}
 }
 
