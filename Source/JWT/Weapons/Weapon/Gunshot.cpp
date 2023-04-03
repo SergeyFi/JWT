@@ -17,7 +17,7 @@ AGunshot::AGunshot()
 
 void AGunshot::Fire()
 {
-	if (Ammo && Ammo->IsAvailable() && bAmmoEquiped)
+	if (CanFire())
 	{
 		Super::Fire();
 
@@ -89,4 +89,9 @@ void AGunshot::OnAmmoDropped()
 			bAmmoEquiped = true;
 		}
 	}
+}
+
+bool AGunshot::CanFire() const
+{
+	return Ammo && Ammo->IsAvailable() && bAmmoEquiped;
 }

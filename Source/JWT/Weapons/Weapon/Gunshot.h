@@ -44,6 +44,8 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Weapon")
 	int32 AmmoPerShot = 1;
 
+	bool CanFire() const;
+
 private:
 	
 	UPROPERTY()
